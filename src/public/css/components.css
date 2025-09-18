@@ -1,0 +1,18 @@
+.header-contents {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header-character {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ef82db;
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+.header-second {
+    font-size: 20px;
+    color: black;
+    font-weight: normal;
+}
