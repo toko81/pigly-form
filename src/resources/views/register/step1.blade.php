@@ -12,11 +12,12 @@
     @section('link')
     <a class="header__link" href="/login">login</a>
     @endsection
+
     @include('components.form')
     <div class="register-form">
         <h4 class="register-form__heading content__sub">STEP1 アカウント情報の登録</h4>
         <div class="register-form__inner">
-            <form class="register-form__form" action="/register" method="post">
+            <form class="register-form__form" action="{{ route('register.step1.store') }}" method="post">
                 @csrf
                 <div class="register-form__group">
                     <label class="register-form__label" for="name">お名前</label>

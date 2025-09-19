@@ -12,7 +12,7 @@
     <div class="container">
         <h2>ログイン</h2>
 
-        <form method="POST" action="{{ route('login.custom') }}">
+        <form  class="form" method="POST" action="{{ route('login.custom') }}">
             @csrf
 
             <div class="form-group">

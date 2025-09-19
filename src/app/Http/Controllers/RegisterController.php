@@ -1,15 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\WeightLog;
+use App\Http\Requests\LoginRequest; 
+use App\Models\User;
+
 
 class RegisterController extends Controller
 {
+    public function index(Request $request)
+    {
+        return view('register.step1');
+    }
+
     public function showLoginForm()
     {
         return view('auth.login');
@@ -28,7 +35,25 @@ class RegisterController extends Controller
         ])->withInput();
     }
 
-    public function step2Form()
+    public function step1Store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('register.step2');
+    }
+
+
+    public function step2()
     {
         return view('register.step2');
     }
